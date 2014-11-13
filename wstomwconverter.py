@@ -54,7 +54,7 @@ class Starter:
         
         (self.options, args) = parser.parse_args()
         if self.options.debug:
-            print "Your commandline options:\n", self.options
+            print("Your commandline options:\n", self.options)
 
 class WikispacesToMediawikiConverter:
     '''The actual converter: reads in file, converts, outputs.
@@ -197,7 +197,7 @@ class WikispacesToMediawikiConverter:
         def code_replace(matchobj):
             code = matchobj.group(2)
             if self.options.debug:
-                print code
+                print(code)
             return '<pre>' + code + '</pre>'
         self.content = re.sub(r'(?s)\[\[code( +format=".*?")?\]\](.*?)\[\[code\]\]', code_replace, self.content)
         
@@ -206,7 +206,7 @@ class WikispacesToMediawikiConverter:
         def math_replace(matchobj):
             code = matchobj.group(2)
             if self.options.debug:
-                print code
+                print(code)
             return '<math>' + code + '</math>'
         self.content = re.sub(r'(?s)\[\[math( +format=".*?")?\]\](.*?)\[\[math\]\]', math_replace, self.content)
 
@@ -223,7 +223,7 @@ class WikispacesToMediawikiConverter:
         def image_parse(matchobj):
             imagetag = matchobj.group(0)
             if self.options.debug:
-                print imagetag
+                print(imagetag)
             image_filename = re.search(r'\[\[image:([^ ]*)', imagetag).group(1)
             
             try:
@@ -289,7 +289,7 @@ class WikispacesToMediawikiConverter:
         def replace_indents(matchobj):
             indents = matchobj.group(0)
             if self.options.debug:
-                print indents
+                print(indents)
             indents = indents.replace('>', ':')
             return indents
         
